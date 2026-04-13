@@ -28,7 +28,7 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     integrationTestImplementation(platform("org.junit:junit-bom:5.10.3"))
     integrationTestImplementation("org.junit.jupiter:junit-jupiter")
-    integrationTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.10.1")
+    integrationTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.10.2")
     integrationTestRuntimeOnly("org.junit.platform:junit-platform-launcher")
     integrationTestRuntimeOnly(kotlin("reflect"))
     integrationTestRuntimeOnly(kotlin("stdlib"))
