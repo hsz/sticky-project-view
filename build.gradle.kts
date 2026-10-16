@@ -35,7 +35,7 @@ dependencies {
     integrationTestImplementation("org.junit.jupiter:junit-jupiter")
     integrationTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.10.1")
     // Match Starter's runtime dependency for its documented DI customization seam.
-    integrationTestImplementation("org.kodein.di:kodein-di-jvm:7.26.1")
+    integrationTestImplementation("org.kodein.di:kodein-di-jvm:7.33.0")
     integrationTestRuntimeOnly("org.junit.platform:junit-platform-launcher")
     integrationTestRuntimeOnly(kotlin("reflect"))
     integrationTestRuntimeOnly(kotlin("stdlib"))
