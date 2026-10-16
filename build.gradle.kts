@@ -31,7 +31,7 @@ val integrationTestRuntimeOnly = configurations.getByName("integrationTestRuntim
 dependencies {
     testImplementation("junit:junit:4.13.2")
     testRuntimeOnly("org.opentest4j:opentest4j:1.3.0")
-    integrationTestImplementation(platform("org.junit:junit-bom:5.10.3"))
+    integrationTestImplementation(platform("org.junit:junit-bom:6.1.3"))
     integrationTestImplementation("org.junit.jupiter:junit-jupiter")
     integrationTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.10.1")
     // Match Starter's runtime dependency for its documented DI customization seam.
