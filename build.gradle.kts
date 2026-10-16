@@ -33,7 +33,7 @@ dependencies {
     testRuntimeOnly("org.opentest4j:opentest4j:1.3.0")
     integrationTestImplementation(platform("org.junit:junit-bom:5.10.3"))
     integrationTestImplementation("org.junit.jupiter:junit-jupiter")
-    integrationTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.10.1")
+    integrationTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.11.0")
     // Match Starter's runtime dependency for its documented DI customization seam.
     integrationTestImplementation("org.kodein.di:kodein-di-jvm:7.26.1")
     integrationTestRuntimeOnly("org.junit.platform:junit-platform-launcher")
