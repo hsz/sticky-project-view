@@ -107,6 +107,23 @@ class StickyTreeInputRouter(
         // Do not send hover events to the tree's tooltip manager, or popup triggers at offscreen row coordinates.
         val listeners = if (event.id == MouseEvent.MOUSE_DRAGGED || event.id == MouseEvent.MOUSE_MOVED)
             tree.mouseMotionListeners.toList() else tree.mouseListeners.toList()
+        // A single click on a sticky row reveals it, so "Open directories with single click" must not collapse it.
+        val toggleClickCount = tree.toggleClickCount
+        val suppressToggle = item != null && event.clickCount == 1 && toggleClickCount == 1
+        if (suppressToggle) tree.toggleClickCount = 0
+        try { dispatch(event, mapped, listeners) } finally { if (suppressToggle) tree.toggleClickCount = toggleClickCount }
+        if (event.isPopupTrigger && captured?.popupShown != true) {
+            listeners.filterIsInstance<PopupHandler>().forEach {
+                it.invokePopup(tree, position.x + event.x, position.y + event.y)
+            }
+            captured?.popupShown = true
+        }
+        if (event.id != MouseEvent.MOUSE_MOVED && event.id != MouseEvent.MOUSE_ENTERED && event.id != MouseEvent.MOUSE_EXITED) {
+            event.consume()
+        }
+    }
+
+    private fun dispatch(event: MouseEvent, mapped: MouseEvent, listeners: List<java.util.EventListener>) {
         for (listener in listeners) {
             if (listener is ToolTipManager) continue
             if (listener is PopupHandler && event.isPopupTrigger) continue
@@ -119,15 +136,6 @@ class StickyTreeInputRouter(
                 MouseEvent.MOUSE_DRAGGED -> (listener as java.awt.event.MouseMotionListener).mouseDragged(mapped)
                 MouseEvent.MOUSE_MOVED -> (listener as java.awt.event.MouseMotionListener).mouseMoved(mapped)
             }
-        }
-        if (event.isPopupTrigger && captured?.popupShown != true) {
-            listeners.filterIsInstance<PopupHandler>().forEach {
-                it.invokePopup(tree, position.x + event.x, position.y + event.y)
-            }
-            captured?.popupShown = true
-        }
-        if (event.id != MouseEvent.MOUSE_MOVED && event.id != MouseEvent.MOUSE_ENTERED && event.id != MouseEvent.MOUSE_EXITED) {
-            event.consume()
         }
     }
 

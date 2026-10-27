@@ -11,6 +11,7 @@
 ### Fixed
 
 - Preserve source and excluded directory backgrounds around selected sticky rows.
+- Keep sticky parents expanded when clicked with "Open directories with single click" enabled.
 
 ## [0.1.0] - 2026-10-15
 

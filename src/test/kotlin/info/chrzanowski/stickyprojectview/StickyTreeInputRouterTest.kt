@@ -92,6 +92,26 @@ class StickyTreeInputRouterTest {
     }
 
     @Test
+    fun `single click toggle setting reveals sticky parent instead of collapsing it`() = fixture { tree, _, panel, items ->
+        val path = items.items().first().treePath
+        tree.toggleClickCount = 1
+        var reveals = 0
+        val router = StickyTreeInputRouter(tree, panel) { _, _ -> reveals++ }
+        send(panel, MouseEvent.MOUSE_PRESSED)
+        send(panel, MouseEvent.MOUSE_RELEASED)
+        send(panel, MouseEvent.MOUSE_CLICKED)
+        assertTrue(tree.isExpanded(path))
+        assertEquals(path, tree.selectionPath)
+        assertEquals(1, tree.toggleClickCount)
+        waitForClick()
+        assertEquals(1, reveals)
+        send(panel, MouseEvent.MOUSE_PRESSED, x = 0)
+        send(panel, MouseEvent.MOUSE_RELEASED, x = 0)
+        assertFalse(tree.isExpanded(path))
+        router.dispose()
+    }
+
+    @Test
     fun `removed captured path is not forwarded and popup is anchored to overlay`() = fixture { tree, pane, panel, items ->
         var popupPoint: Point? = null
         tree.addMouseListener(object : PopupHandler() {
