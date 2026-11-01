@@ -4,6 +4,12 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- Keep sticky parents expanded when clicked with "Open directories with single click" enabled.
+
+## [0.2.0] - 2026-10-16
+
 ### Added
 
 - Add toggle action to project view toolbar
@@ -11,7 +17,6 @@
 ### Fixed
 
 - Preserve source and excluded directory backgrounds around selected sticky rows.
-- Keep sticky parents expanded when clicked with "Open directories with single click" enabled.
 
 ## [0.1.0] - 2026-10-15
 
@@ -73,7 +78,8 @@
 - Initial Sticky Project View implementation.
 - Sticky parent directories for expanded Project View nodes while scrolling.
 
-[Unreleased]: https://github.com/hsz/sticky-project-view/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/hsz/sticky-project-view/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/hsz/sticky-project-view/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/hsz/sticky-project-view/compare/v0.0.2...v0.1.0
 [0.0.2]: https://github.com/hsz/sticky-project-view/compare/v0.0.1...v0.0.2
 [0.0.1]: https://github.com/hsz/sticky-project-view/commits/v0.0.1
